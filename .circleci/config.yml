@@ -1,0 +1,44 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/android:latest  # Use a pre-built Android Docker image
+
+    working_directory: ~/app  # Set the working directory
+
+    environment:
+      # Set Android SDK paths
+      ANDROID_HOME: /opt/android/sdk
+      PATH: /opt/android/sdk/tools:/opt/android/sdk/tools/bin:/opt/android/sdk/platform-tools:/usr/local/bin:/usr/bin:/bin:/opt/android/sdk/cmdline-tools/latest/bin
+      GRADLE_OPTS: '-Dorg.gradle.daemon=false'  # Optional, to prevent Gradle daemon issues
+
+    steps:
+      - checkout  # Step to check out your source code
+
+      - run:
+          name: Update SDK tools
+          command: sdkmanager "platform-tools" "platforms;android-30"  # Update SDK tools and platforms as needed
+
+      - run:
+          name: Gradle Clean
+          command: ./gradlew clean  # Clean the project
+
+      - run:
+          name: Build APK
+          command: ./gradlew assembleRelease  # Command to build the APK
+
+      - store_artifacts:
+          path: app/build/outputs/apk/release
+          destination: apk-release  # Store the built APK as an artifact
+
+      - persist_to_workspace:
+          root: ~/app
+          paths:
+            - app/build/outputs/apk/release/  # Persist APK files for further jobs
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build

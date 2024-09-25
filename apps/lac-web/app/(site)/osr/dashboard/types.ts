@@ -1,0 +1,23 @@
+export type Customer = {
+  countryName: string;
+  county: string;
+  locality: string;
+  organization: string;
+  phoneNumber: string;
+  region: string;
+  streetAddress: string;
+  postalCode: string;
+  zip4: string;
+  billTo: string;
+  userId: string;
+  totalOrders: number;
+  email: string;
+  subTotal: string;
+  date: Date;
+  company: string;
+  phone: string;
+  fullName: string;
+  totalItems: number;
+  salesRep: string;
+  permission: string;
+};

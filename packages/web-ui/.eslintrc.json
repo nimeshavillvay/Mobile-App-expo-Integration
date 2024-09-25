@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "@repo/eslint-config/react-library.js",
+    "@repo/eslint-config/next.js"
+  ],
+  "rules": {
+    "@next/next/no-html-link-for-pages": 0
+  }
+}

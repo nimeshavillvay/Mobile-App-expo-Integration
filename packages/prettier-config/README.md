@@ -1,0 +1,3 @@
+# Shared Prettier Config
+
+This configuration is to be shared and used across packages with their own Tailwind CSS configurations. There is an issue with formatting Tailwind CSS classes with a single configuration at the monorepo root when custom classes is introduced at the package level since the [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) only looks for the Tailwind CSS configuration file where the Prettier configuration is also unless specified. This package follows the workaround mentioned [here](https://github.com/tailwindlabs/prettier-plugin-tailwindcss/issues/59).

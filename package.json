@@ -1,0 +1,39 @@
+{
+  "name": "wurth-frontend-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "dotenv -c -- turbo dev",
+    "build": "dotenv -c -- turbo build",
+    "start": "dotenv -c -- turbo start",
+    "lint": "dotenv -c -- turbo lint",
+    "prettier:format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,json,yaml}\" --cache --cache-location=.prettier/cache",
+    "prettier:check": "prettier --check \"**/*.{js,jsx,ts,tsx,md,json,yaml}\" --cache --cache-location=.prettier/cache"
+  },
+  "engines": {
+    "node": ">=20.12.2",
+    "pnpm": "9.4.0"
+  },
+  "packageManager": "pnpm@9.4.0",
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@babel/*",
+        "expo-modules-*",
+        "typescript"
+      ]
+    },
+    "overrides": {
+      "next": "14.2.13",
+      "react": "18.3.1",
+      "react-dom": "18.3.1"
+    }
+  },
+  "devDependencies": {
+    "@repo/prettier-config": "workspace:*",
+    "prettier": "3.3.2",
+    "turbo": "2.0.5"
+  },
+  "dependencies": {
+    "dotenv-cli": "7.4.2"
+  }
+}

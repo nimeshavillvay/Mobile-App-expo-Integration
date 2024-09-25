@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "VERCEL_ENV",
+    "VERCEL_PROJECT_PRODUCTION_URL",
+    "NEXT_PUBLIC_WURTH_LAC_API",
+    "NEXT_PUBLIC_WURTH_LAC_SEARCH_API",
+    "NEXT_PUBLIC_WURTH_LAC_API_KEY",
+    "NEXT_PUBLIC_WURTH_LAC_SNAPPAY_URL",
+    "NEXT_PUBLIC_WURTH_LAC_RECAPTCHA_SITE_KEY",
+    "NEXT_PUBLIC_WURTH_LAC_GTM_KEY",
+    "NEXT_PUBLIC_WURTH_LAC_DISABLE_GTM",
+    "EXPO_USE_METRO_WORKSPACE_ROOT",
+    "EXPO_PUBLIC_API_URL"
+  ],
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
+    "build": {
+      "dependsOn": ["^build", "lint"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "node_modules/.cache/metro/**",
+        "storybook-static/**"
+      ]
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    }
+  }
+}
